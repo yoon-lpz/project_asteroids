@@ -16,6 +16,7 @@ public class BulletPool : MonoBehaviour
         //   Singleton.
         //   Fer les comprovacions necessàries perquè només hi hagi una instància d'aquest singleton 
         // TODO: Inicialitza aquí la Pool amb base que es farà servir.
+        for (int i = 0; i < initialSize; i++) pool.Push(CreateBullet());
     }
 
     private Bullet CreateBullet()
@@ -23,7 +24,10 @@ public class BulletPool : MonoBehaviour
         // TODO:
         //   Instància els prefabs recorda que els has d'instanciar desactivats.
         //   Bullet bullet = Instantiate(bulletPrefab, transform);
-        return null;
+        Bullet bullet = Instantiate(bulletPrefab, transform);
+        bullet.gameObject.SetActive(false);
+        return bullet;
+        //return null;
     }
 
     public Bullet GetBullet(Vector3 position, Quaternion rotation)
@@ -35,13 +39,20 @@ public class BulletPool : MonoBehaviour
         //     Activa-la
         //     Inizialitza amb Init(). (important col·locar-la i rotar-la 1r i després iniciar)
         //     retorna-la.
-        
-        return null;
+        Bullet bullet;
+        bullet = pool.Count > 0 ? pool.Pop() : CreateBullet();
+
+        bullet.transform.position = position;
+        bullet.gameObject.SetActive(true);
+        return bullet;
+        //return null;
     }
 
     // Mètode cridat per la bullet quan termina el temps o impacta amb un Asteroid.
     public void ReturnBullet(Bullet bullet)
     {
-        // TODO: Desactiva la bullet i retorna-la a la seva pool
-    }
+		// TODO: Desactiva la bullet i retorna-la a la seva pool
+		bullet.gameObject.SetActive(false);
+		pool.Push(bullet);
+	}
 }

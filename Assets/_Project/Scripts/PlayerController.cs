@@ -20,19 +20,17 @@ public class PlayerController : MonoBehaviour, InputSystem_Actions.ISpaceShipAct
     {
         mainCamera = Camera.main;
 
-        // TODO: Crea el new inputActions
-        // TODO: Fes que els Callbacks avisin aquest script
+		// TODO: Crea el new inputActions
+		// TODO: Fes que els Callbacks avisin aquest script
+		inputActions = new InputSystem_Actions();
+		inputActions.SpaceShip.SetCallbacks(this);
     }
 
-    private void OnEnable()
-    {
-        // TODO: Activa (Enable) l'inputActions
-    }
+    // TODO: Activa (Enable) l'inputActions
+    private void OnEnable() => inputActions.Enable();
 
-    private void OnDisable()
-    {
-        // TODO: Desactiva (Disable) l'inputActions
-    }
+	// TODO: Desactiva (Disable) l'inputActions
+	private void OnDisable() => inputActions.Disable();
 
     public void OnAim(InputAction.CallbackContext context)
     {
@@ -40,19 +38,22 @@ public class PlayerController : MonoBehaviour, InputSystem_Actions.ISpaceShipAct
         {
             return;
         }
-        // TODO: aimScreenPosition = context;
-        aimScreenPosition = new Vector2 (1f, 1f);
-        Vector3 mouseWorldPosition = mainCamera.ScreenToWorldPoint(aimScreenPosition);
+		// TODO: aimScreenPosition = context;
+		//aimScreenPosition = new Vector2 (1f, 1f);
+		aimScreenPosition = context.ReadValue<Vector2>() * Time.deltaTime;
+		Vector3 mouseWorldPosition = mainCamera.ScreenToWorldPoint(aimScreenPosition);
         Vector2 direction = mouseWorldPosition - transform.position;
         transform.up = direction;
     }
     public void OnFire(InputAction.CallbackContext context)
     {
-        // TODO: si no és "performed" no facis res (if (!context.performed) return;)
-
-        // TODO: si és GameOver no facis res GameManager.Instance.IsGameOver (return).
+		// TODO: si no és "performed" no facis res (if (!context.performed) return;)
+		// TODO: si és GameOver no facis res GameManager.Instance.IsGameOver (return).
+		if (!context.performed) return;
+		if (GameManager.Instance.IsGameOver) return;
 
         // TODO: Dispara.
         //       BulletPool.Instance.GetBullet(firePoint.position, transform.rotation);
-    }
+        BulletPool.Instance.GetBullet(firePoint.position, transform.rotation);
+	}
 }
