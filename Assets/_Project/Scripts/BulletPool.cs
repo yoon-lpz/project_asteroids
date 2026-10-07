@@ -16,6 +16,10 @@ public class BulletPool : MonoBehaviour
         //   Singleton.
         //   Fer les comprovacions necessàries perquè només hi hagi una instància d'aquest singleton 
         // TODO: Inicialitza aquí la Pool amb base que es farà servir.
+
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject);
+
         for (int i = 0; i < initialSize; i++) pool.Push(CreateBullet());
     }
 
