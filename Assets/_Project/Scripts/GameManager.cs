@@ -57,6 +57,8 @@ public class GameManager : MonoBehaviour
         if (IsGameOver) return;
         lives -= amount;
         UpdateUI();
+
+        GameOver();
     }
 
     private void GameOver()

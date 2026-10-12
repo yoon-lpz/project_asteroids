@@ -34,13 +34,13 @@ public class PlayerController : MonoBehaviour, InputSystem_Actions.ISpaceShipAct
 
     public void OnAim(InputAction.CallbackContext context)
     {
-        if (!context.performed|| GameManager.Instance.IsGameOver)
-        {
-            return;
-        }
-		// TODO: aimScreenPosition = context;
-		//aimScreenPosition = new Vector2 (1f, 1f);
-		aimScreenPosition = context.ReadValue<Vector2>() * Time.deltaTime;
+        if (!context.performed || GameManager.Instance == null || GameManager.Instance.IsGameOver) return;
+
+        if (!context.performed|| GameManager.Instance.IsGameOver) return;
+
+        // TODO: aimScreenPosition = context;
+        //aimScreenPosition = new Vector2 (1f, 1f);
+        aimScreenPosition = context.ReadValue<Vector2>();
 		Vector3 mouseWorldPosition = mainCamera.ScreenToWorldPoint(aimScreenPosition);
         Vector2 direction = mouseWorldPosition - transform.position;
         transform.up = direction;

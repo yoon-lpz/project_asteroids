@@ -13,11 +13,13 @@ public class Bullet : MonoBehaviour
     private void Awake()
     {
         // TODO: guarda el component Rigidboy (rb)
+        rb = GetComponent<Rigidbody2D>();
     }
 
     public void Init()
     {
         // TODO: fem reset al lifeTimer.
+        lifeTimer = lifeTime;
 
         // TODO: fem que la bullet es mogui cap al seu Forward.
         // "Forward" per un 2D sprite pointing up is transform.up // rb.linearVelocity = ...
