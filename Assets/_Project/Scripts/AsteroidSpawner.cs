@@ -31,10 +31,7 @@ public class AsteroidSpawner : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.Instance != null && GameManager.Instance.IsGameOver)
-        {
-            return;
-        }
+        if (GameManager.Instance != null && GameManager.Instance.IsGameOver) return;
 
         spawnTimer -= Time.deltaTime;
 

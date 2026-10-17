@@ -16,6 +16,8 @@ public class Bullet : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
+    public void OnEnable() => Init();
+
     public void Init()
     {
         // TODO: fem reset al lifeTimer.
@@ -30,8 +32,8 @@ public class Bullet : MonoBehaviour
     {
         // TODO: Restem Time.deltaTime a lifeTimer.
         //       si arriba a 0 retorna la bullet amb BulletPool.Instance.ReturnBullet(this).
-        lifeTime -= Time.deltaTime;
-        if (lifeTime == 0) BulletPool.Instance.ReturnBullet(this);
+        lifeTimer -= Time.deltaTime;
+        if (lifeTimer == 0) BulletPool.Instance.ReturnBullet(this);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -42,7 +44,7 @@ public class Bullet : MonoBehaviour
         //   comprova si 'other' és un Ateroid i quedat amb el component (GetComponent<Asteroid>()).
         //   si no és null TakeDamage(damage) i retorna la bullet a la seva pool (asteroid != null).
 
-        if (gameObject.activeSelf) return;
+        if (!gameObject.activeSelf) return;
 
         Asteroid asteroid = other.GetComponent<Asteroid>();
 
