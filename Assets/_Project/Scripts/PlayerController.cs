@@ -54,6 +54,6 @@ public class PlayerController : MonoBehaviour, InputSystem_Actions.ISpaceShipAct
 
         // TODO: Dispara.
         //       BulletPool.Instance.GetBullet(firePoint.position, transform.rotation);
-        BulletPool.Instance.GetBullet(firePoint.position, transform.rotation);
+        BulletPool.Instance.GetBullet(firePoint.position, firePoint.rotation);
 	}
 }

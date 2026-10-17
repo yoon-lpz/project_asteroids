@@ -46,8 +46,9 @@ public class BulletPool : MonoBehaviour
         Bullet bullet;
         bullet = pool.Count > 0 ? pool.Pop() : CreateBullet();
 
-        bullet.transform.position = position;
+        bullet.transform.SetPositionAndRotation(position, rotation);
         bullet.gameObject.SetActive(true);
+        bullet.Init();
         return bullet;
         //return null;
     }

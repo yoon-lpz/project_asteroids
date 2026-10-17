@@ -55,10 +55,10 @@ public class GameManager : MonoBehaviour
         //       si lives < 0 GameOver().
         //       Extra: si el joc ja ha terminat no facis res
         if (IsGameOver) return;
-        lives -= amount;
+        lives = lives - amount > 0? lives - amount : 0;
         UpdateUI();
 
-        GameOver();
+        if (lives <= 0) GameOver();
     }
 
     private void GameOver()
@@ -67,12 +67,9 @@ public class GameManager : MonoBehaviour
         //     IsGameOver = true
         //     Fes aparèixer el panell de GameOver
         //     Congela el joc Time.timeScale = 0
-        if (lives < 0)
-        {
-            IsGameOver = true;
-            gameOverPanel.SetActive(true);
-            Time.timeScale = 0;
-        }
+        IsGameOver = true;
+        gameOverPanel.SetActive(true);
+        Time.timeScale = 0;
     }
 
     // Assigna aquest mètode al Restart button: On Click () al Inspector.

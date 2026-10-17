@@ -16,8 +16,6 @@ public class Bullet : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    public void OnEnable() => Init();
-
     public void Init()
     {
         // TODO: fem reset al lifeTimer.
