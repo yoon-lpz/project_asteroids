@@ -60,7 +60,7 @@ public class Asteroid : MonoBehaviour
         // Retornem l'asteroid a la seva pool
         if (currentHealth <= 0)
         {
-            GameManager.Instance.AddScore(currentHealth);
+            GameManager.Instance.AddScore(data.scoreValue);
             AsteroidPool.Instance.ReturnAsteroid(this);
         }
     }
@@ -76,7 +76,6 @@ public class Asteroid : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             GameManager.Instance.LoseLife(data.damage);
-            GameManager.Instance.AddScore(data.scoreValue);
             AsteroidPool.Instance.ReturnAsteroid(this);
         }
     }
