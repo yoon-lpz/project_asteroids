@@ -45,12 +45,14 @@ public class Asteroid : MonoBehaviour
         // TODO: Retornar l'ateroide al pool quan ja està massa lluny
         // Distancia al centre: transform.position.magnitude
         // Si és més gran que despawnDistance, cridem AsteroidPool.Instance.ReturnAsteroid(this)
+        if (transform.position.magnitude > despawnDistance) AsteroidPool.Instance.ReturnAsteroid(this);
 
     }
 
     public void TakeDamage(int amount)
     {
         // TODO: Restem amount al currentHealth
+        currentHealth -= amount;
 
         // TODO: si la currentHealth es menor a 0 
         // Sumem els punt al Player
