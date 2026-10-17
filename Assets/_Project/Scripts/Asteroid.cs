@@ -58,6 +58,11 @@ public class Asteroid : MonoBehaviour
         // Sumem els punt al Player
         // Cridem al GameManger i el seu mètode per sumar scoreValue
         // Retornem l'asteroid a la seva pool
+        if (currentHealth < 0)
+        {
+            GameManager.Instance.AddScore(currentHealth);
+            AsteroidPool.Instance.ReturnAsteroid(this);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -67,5 +72,11 @@ public class Asteroid : MonoBehaviour
         // Retornem l'asteroid a la seva pool
         // Tip: if si l'asteroid ja està innactiu no fagis res
         //      (if (!gameObject.activeSelf) return;)
+        if (!gameObject.activeSelf) return;
+        if (other.CompareTag("Player"))
+        {
+            GameManager.Instance.LoseLife(data.damage);
+            AsteroidPool.Instance.ReturnAsteroid(this);
+        }
     }
 }
