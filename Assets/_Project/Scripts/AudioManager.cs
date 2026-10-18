@@ -5,7 +5,8 @@ public class AudioManager : MonoBehaviour
     public static AudioManager Instance;
 
     public AudioSource audioSource;
-    public AudioClip shootSound;
+    public AudioClip ShootSound;
+    public AudioClip AsteroidDestroy;
 
     private void Awake()
     {
@@ -17,5 +18,6 @@ public class AudioManager : MonoBehaviour
         else Destroy(gameObject);
     }
 
-    public void PlayShootSound() => audioSource.PlayOneShot(shootSound);
+    public void PlayShootSound() => audioSource.PlayOneShot(ShootSound);
+    public void PlayAsteroidDestroySound() => audioSource.PlayOneShot(AsteroidDestroy);
 }

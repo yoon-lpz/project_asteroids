@@ -1554,7 +1554,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
   audioSource: {fileID: 1756160483}
-  shootSound: {fileID: 8300000, guid: abb4c118a5f38dd45bc7a09578b378ad, type: 3}
+  ShootSound: {fileID: 8300000, guid: abb4c118a5f38dd45bc7a09578b378ad, type: 3}
+  AsteroidDestroy: {fileID: 8300000, guid: 2188a2caaff28904793b877196c7fb6e, type: 3}
 --- !u!82 &1756160483
 AudioSource:
   m_ObjectHideFlags: 0

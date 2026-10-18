@@ -61,6 +61,7 @@ public class Asteroid : MonoBehaviour
         if (currentHealth <= 0)
         {
             GameManager.Instance.AddScore(data.scoreValue);
+            AudioManager.Instance.PlayAsteroidDestroySound();
             AsteroidPool.Instance.ReturnAsteroid(this);
         }
     }
