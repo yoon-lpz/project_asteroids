@@ -7,6 +7,7 @@ public class AudioManager : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip ShootSound;
     public AudioClip AsteroidDestroy;
+    public AudioClip TakeDamageSound;
 
     private void Awake()
     {
@@ -20,4 +21,5 @@ public class AudioManager : MonoBehaviour
 
     public void PlayShootSound() => audioSource.PlayOneShot(ShootSound);
     public void PlayAsteroidDestroySound() => audioSource.PlayOneShot(AsteroidDestroy);
+    public void PlayTakeDamageSound() => audioSource.PlayOneShot(TakeDamageSound);
 }

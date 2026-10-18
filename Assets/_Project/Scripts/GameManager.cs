@@ -57,6 +57,7 @@ public class GameManager : MonoBehaviour
         if (IsGameOver) return;
         lives = lives - amount > 0? lives - amount : 0;
         UpdateUI();
+        AudioManager.Instance.PlayTakeDamageSound();
 
         if (lives <= 0) GameOver();
     }

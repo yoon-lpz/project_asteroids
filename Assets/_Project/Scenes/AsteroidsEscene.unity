@@ -1556,6 +1556,7 @@ MonoBehaviour:
   audioSource: {fileID: 1756160483}
   ShootSound: {fileID: 8300000, guid: abb4c118a5f38dd45bc7a09578b378ad, type: 3}
   AsteroidDestroy: {fileID: 8300000, guid: 2188a2caaff28904793b877196c7fb6e, type: 3}
+  TakeDamageSound: {fileID: 8300000, guid: fc230b4c4a0f010499179278ad9b9e42, type: 3}
 --- !u!82 &1756160483
 AudioSource:
   m_ObjectHideFlags: 0
